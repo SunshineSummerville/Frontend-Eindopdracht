@@ -5,6 +5,10 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Home from './pages/Home'
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
+import Profile from "./pages/Profile";
 
 export default function App() {
   return (
@@ -16,10 +20,13 @@ export default function App() {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/about">About</Link>
+                <Link to="/signup">Sign Up</Link>
               </li>
               <li>
-                <Link to="/users">Users</Link>
+                <Link to="/signin">Sign In</Link>
+              </li>
+              <li>
+                <Link to="/profile">Profile</Link>
               </li>
             </ul>
           </nav>
@@ -30,11 +37,14 @@ export default function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/about">
-              <About />
+            <Route path="/signin">
+              <SignIn />
             </Route>
-            <Route path="/users">
-              <Users />
+            <Route path="/signup">
+              <SignUp />
+            </Route>
+            <Route path="/profile">
+              <Profile />
             </Route>
             <Route path="/">
               <h1>404 not found</h1>
@@ -45,14 +55,4 @@ export default function App() {
   );
 }
 
-function Home() {
-  return <h2>Home</h2>;
-}
 
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
