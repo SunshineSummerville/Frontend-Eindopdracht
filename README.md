@@ -27,13 +27,14 @@ een link aanmaken in de navbar <li
     inputvelden: username, password
     submit button
     alle inputvelden moeten een "name" hebben
+    Styling (CSS)
     
     Interacties programmeren:
     react-hook-form installeren
     useForm() -> importeren
     inputvelden registreren
-    output logen
-    submitHandler malen
+    output loggen
+    submitHandler maken & toevoegen
     
     validatie & Feedback
     validate( alles goed invullen)
