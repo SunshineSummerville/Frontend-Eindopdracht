@@ -36,11 +36,12 @@ een link aanmaken in de navbar <li
     output loggen
     submitHandler maken & toevoegen
     
-    validatie & Feedback
+    validatie & Feedback: 
     validate( alles goed invullen)
     error message feedback
     -Sign in 
     -Sign up    
+    https://react-hook-form.com/get-started
         
     
     
