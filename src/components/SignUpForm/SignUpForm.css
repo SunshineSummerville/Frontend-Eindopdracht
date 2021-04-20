@@ -1,0 +1,23 @@
+label,input {
+    display: block;
+    margin: 10px;
+}
+
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-weight: 80;
+    text-align: left;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(79, 98, 148);
+}
+
+.form {
+    background: rgb(255, 255, 90);
+    max-width: 200px;
+    margin: auto;
+}
