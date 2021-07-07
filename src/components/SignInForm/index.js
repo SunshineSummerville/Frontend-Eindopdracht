@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
-import './SignInForm.css'
+import styles from './SignInForm.module.css';
 
 export default function SignInForm() {
     const { register, handleSubmit, errors } = useForm();

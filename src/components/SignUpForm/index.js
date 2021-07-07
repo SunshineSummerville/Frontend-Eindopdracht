@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
-import styles from './SignUpForm.module.css'
+import styles from './SignUpForm.module.css';
 import axios from "axios";
 
 
@@ -26,7 +26,8 @@ export default function SignUpForm() {
                 phonenumber: data.phonenumber,
                 streetname: data.street,
                 housenumber: data.housenumber,
-                postalcode: data.postalcode
+                postalcode: data.postalcode,
+                provincie:data.provincie
 
 
 
@@ -43,9 +44,9 @@ export default function SignUpForm() {
     }
 
 
-    return <form className={styles.SignUpForm} onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="userName">Username</label>
-        <input name={"username"} type="text" ref={register({ required: true,minLength:2 })}/>
+    return <form className={styles.signupForm} onSubmit={handleSubmit(onSubmit)}>
+        <label className={styles.title_gebruikersnaam} htmlFor="userName">Username</label>
+        <input  name={"username"} type="text" ref={register({ required: true,minLength:2 })}/>
         {errors.username && <span>This field is required</span>}
 
         <label htmlFor="password">Password</label>
@@ -79,6 +80,10 @@ export default function SignUpForm() {
         <label htmlFor="postalCode">Postalcode</label>
         <input name={"postalcode"} type="text" ref={register({ required: true,minLength:4 })}/>
         {errors.postalcode && <span>This field is required</span>}
+
+        <label htmlFor="provincie">Provincie</label>
+        <input name={"provincie"} type="text" ref={register({ required: true,minLength:4 })}/>
+        {errors.provincie && <span>This field is required</span>}
 
 
         <input type="submit"
