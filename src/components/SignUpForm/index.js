@@ -11,7 +11,7 @@ export default function SignUpForm() {
 
     async function onSubmit (data)  {
 
-        // await axios.post('http://localhost:8080/api/auth/signup');
+
 
         // e.preventDefault()
 
@@ -24,7 +24,7 @@ export default function SignUpForm() {
                 lastname: data.lastname,
                 email: data.email,
                 phonenumber: data.phonenumber,
-                streetname: data.street,
+                street: data.street,
                 housenumber: data.housenumber,
                 postalcode: data.postalcode,
                 provincie:data.provincie
@@ -95,4 +95,3 @@ export default function SignUpForm() {
 
 }
 
-// bij input type = submit ,nog een //onClick={onSubmit} toevoegen?

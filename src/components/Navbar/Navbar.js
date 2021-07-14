@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import {SidebarData} from "./SidebarData";
 import "./Navbar.css";
 import {IconContext} from "react-icons";
+import Searchbar from "../Searchbar/Searchbar";
 
 function Navbar() {
     const [sidebar, setSidebar] = useState(false)
@@ -15,6 +16,7 @@ function Navbar() {
         <>
         <IconContext.Provider value={{color:'#fff'}}>
             <div className= "navbar">
+                <Searchbar/>
                 <Link to="#" className= 'menu-bars'>
                     <FaIcons.FaBars onClick={showSidebar}/>
                 </Link>
