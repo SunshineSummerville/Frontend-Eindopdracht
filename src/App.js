@@ -44,6 +44,9 @@ export default function App() {
               <li>
                 <Link to="/profile">Profile</Link>
               </li>
+              <li>
+                <Link to="/Shoppingcart">Shopping Cart</Link>
+              </li>
             </ul>
           </Navbar>
 
@@ -67,6 +70,9 @@ export default function App() {
             </Route>
             <Route path="/profile">
               <Profile />
+            </Route>
+            <Route path="/Shoppingcart">
+              <Services />
             </Route>
             <Route path="/">
               <h1>404 not found</h1>

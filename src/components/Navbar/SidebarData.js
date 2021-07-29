@@ -19,17 +19,17 @@ export const SidebarData = [
     {
         title: 'Services',
         path: '/services',
-        icon: <FaIcons.FaCartPlus />,
+        icon: <IoIcons.IoIosBusiness/>,
         className: 'nav-text'
     },
     {
-        title: 'Signin',
+        title: 'Sign in',
         path: '/signin',
         icon: <IoIcons.IoMdPeople />,
         className: 'nav-text'
     },
     {
-        title: 'Signup',
+        title: 'Sign up',
         path: '/signup',
         icon: <IoIcons.IoMdPeople />,
         className: 'nav-text'
@@ -50,6 +50,12 @@ export const SidebarData = [
         title: 'Support',
         path: '/support',
         icon: <IoIcons.IoMdHelpCircle />,
+        className: 'nav-text'
+    },
+    {
+        title: 'Shopping Cart',
+        path: '/services',
+        icon: <FaIcons.FaCartPlus />,
         className: 'nav-text'
     },
 ]
