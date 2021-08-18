@@ -75,6 +75,7 @@ export default function SignUpForm(props) {
         <input name={"email"} type="text"
                ref={register({required: true, minLength: 2, pattern: /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/})}/>
         {errors.email && <span>This field is required</span>}
+        {/*//@TODO check requirements . in email*/}
 
         <label htmlFor="phoneNumber">Phonenumber</label>
         <input name={"phonenumber"} type="text" ref={register({required: true, minLength: 1})}/>
