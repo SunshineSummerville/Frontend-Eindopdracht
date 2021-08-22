@@ -1,11 +1,15 @@
-import React from 'react';
-import { useForm } from "react-hook-form";
+import React  from 'react';
+import {  useForm } from "react-hook-form";
 import styles from './SignInForm.module.css';
 import axios from "axios";
+import {useHistory} from "react-router";
 
 
 export default function SignInForm() { //TODO eerst checken of gebruiker al bestaat
     const { register, handleSubmit, errors } = useForm();
+    const history = useHistory();
+
+
 
 
     async function onSubmit (data)  {
@@ -18,19 +22,22 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
 
 
             });
-
-            console.log(result);
+            localStorage.setItem('user_id', JSON.stringify(result.data) )
+            // console.log(JSON.stringify(result.data))
+            history.push("/profile");
+            // console.log(result);
         } catch (e) {
             console.error(e);
 
         }
+        // console.log(currentUser)
 
-        console.log(data)
+        //console.log(data)
 
     }
 
 
-    return <form className={styles.signinForm} onSubmit={handleSubmit(onSubmit)}>
+    return <form className={styles.signinForm} onSubmit={handleSubmit(onSubmit)} >
         <label  htmlFor="userName">Username</label>
         <input  name={"username"} type="text" ref={register({ required: true,minLength:2 })}/>
         {errors.username && <span>This field is required</span>}
@@ -41,9 +48,11 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
 
 
 
-        <input type="submit"
+        <button type="submit"
 
-        />
+        >
+            inloggen
+        </button>
 
 
     </form>

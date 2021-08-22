@@ -27,7 +27,8 @@ export default function SignUpForm(props) {
                 street: data.street,
                 housenumber: data.housenumber,
                 postalcode: data.postalcode,
-                provincie: data.provincie
+                provincie: data.provincie,
+                role: ["user"]
 
 
             });

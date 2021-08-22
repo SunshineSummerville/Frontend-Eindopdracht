@@ -13,7 +13,10 @@ import Main from "../ShoppingCart/Main";
 function Navbar (props) {
     const [sidebar, setSidebar] = useState(false)
 
+
     const showSidebar = () => setSidebar(!sidebar)
+
+
 
     return (
         <>
@@ -22,7 +25,7 @@ function Navbar (props) {
                 <Link to="#" className= 'menu-bars'>
                     <FaIcons.FaBars onClick={showSidebar}/>
                 </Link>
-                <Searchbar/>
+                <Searchbar  />
                 <Header></Header>
                 <div className="row">
                     <Main></Main>

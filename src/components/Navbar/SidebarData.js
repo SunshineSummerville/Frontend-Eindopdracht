@@ -23,6 +23,12 @@ export const SidebarData = [
         className: 'nav-text'
     },
     {
+        title: 'Handyman Sign up',
+        path: '/handymansignup',
+        icon: <IoIcons.IoMdPeople />,
+        className: 'nav-text'
+    },
+    {
         title: 'Sign in',
         path: '/signin',
         icon: <IoIcons.IoMdPeople />,

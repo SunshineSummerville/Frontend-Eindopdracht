@@ -11,13 +11,32 @@ import Services from "./pages/Services";
 import Handymen from "./pages/Handymen";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
-import Profile from "./pages/Profile";
+import Profile from "./pages/ProfilePage";
 import Navbar from "./components/Navbar/Navbar";
+import HandymanSignup from "./pages/HandymanSignUp";
 import Searchbar from "./components/Searchbar/Searchbar";
+import axios from "axios";
 
 
+
+axios.interceptors.request.use(function (config) {
+  let currentUser = localStorage.getItem('currentUser');
+  // console.log(currentUser)
+
+  if (currentUser) {
+    currentUser =  JSON.parse(currentUser)
+    // console.log(currentUser.accessToken)
+
+    config.headers.Authorization =  currentUser.tokenType + " " + currentUser.accessToken;
+  }
+
+
+  return config;
+});
 
 export default function App() {
+
+
   return (
       <Router>
         <div>
@@ -34,6 +53,9 @@ export default function App() {
               </li>
               <li>
                 <Link to="/Handymen">Handymen</Link>
+              </li>
+              <li>
+              <Link to="/HandymanSignup">HandymanSignup</Link>
               </li>
               <li>
                 <Link to="/signup">Sign Up</Link>
@@ -64,6 +86,9 @@ export default function App() {
             </Route>
             <Route path="/signin">
               <SignIn />
+            </Route>
+            <Route path="/HandymanSignup">
+              <HandymanSignup />
             </Route>
             <Route path="/signup">
               <SignUp />

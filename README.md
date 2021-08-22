@@ -14,7 +14,7 @@ een link aanmaken in de navbar <li
     -Home
     -SignIn
     -Signup
-    -Profile
+    -Index
 
 -Github koppelen aan dit project
     -remote aanmaken op github
