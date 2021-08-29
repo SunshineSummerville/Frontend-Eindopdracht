@@ -1,13 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import  './index.module.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import {BrowserRouter as Router} from "react-router-dom";
+import App from "./App";
+import AuthContextProvider from "./context/AuthContext"
+import LanguageContext from "./context/LanguageContext";
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Router>
+            {/*<LanguageContextProvider>*/}
+                <AuthContextProvider>
+                    <App/>
+                </AuthContextProvider>
+            {/*</LanguageContextProvider>*/}
+
+        </Router>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 
