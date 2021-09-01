@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {  useForm } from "react-hook-form";
 import styles from './SignInForm.module.css';
 import axios from "axios";
-import {useHistory} from "react-router-dom";
 import {Link} from "react-router-dom";
 
 
@@ -10,8 +9,6 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
     const { register, handleSubmit, errors } = useForm();
     const [loginSucces, setLoginSucces] = useState (false);
     const [loading, setLoading] = useState(false);
-    const history = useHistory();
-
 
 
 
@@ -29,7 +26,7 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
             localStorage.setItem("accesToken", result.data.accessToken);
             //console.log(JSON.stringify(result.data));
             setLoginSucces(true);
-            history.push("/profile");
+
              console.log(result);
         } catch (e) {
             console.error(e);
