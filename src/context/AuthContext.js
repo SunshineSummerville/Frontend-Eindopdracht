@@ -11,14 +11,16 @@ function AuthContextProvider({children}) {
     async function fetchUserData(JWToken) {
         const decoded = jwt_Decode(JWToken);
         const userId = decoded.sub;
+        localStorage.setItem("token", JWToken)
+
         try {
-            const result = await axios.get(`http://localhost:3000/600/users/${userId}`, {
+            const result = await axios.get(`http://localhost:8080/api/user/${userId}`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${JWToken}`,
                 }
             })
-            // console.log(result)
+             console.log(" fetchUserdata waar ben je?",result)
             setAuthState({
                 user: {
                     firstname: result.data.firstname,
@@ -32,10 +34,13 @@ function AuthContextProvider({children}) {
 
         } catch (e) {
             console.error(e)
+            logoutFunction();
+            console.log("Hallo")
         }
     }
+
     useEffect(() => {
-        const token = localStorage.getItem('Token')
+        const token = localStorage.getItem("token")
         if (token !== null && authState.user === null) {
             fetchUserData(token);
         } else {
@@ -44,28 +49,35 @@ function AuthContextProvider({children}) {
                 status: "done"
             });
         }
-    }, [authState.user])
+    }, [])
 
     async function loginFunction(JWToken) {
         // console.log(JWToken)
         // console.log("DECODED", decoded)
-        localStorage.setItem('Token', JWToken);
+        localStorage.setItem("token", JWToken);
         fetchUserData(JWToken);
-        history.push('/profile');
+        history.push("/profile");
+
+
     }
+
 
     function logoutFunction() {
         console.log("LOGOUT")
         localStorage.clear();
-        // setAuthState({user: null, status: "done"});
-        history.push("/")
+        setAuthState({user: null, status: "done"});
+        history.push("/");
     }
 
     const data = {
         ...authState,
+        authState: authState,
         login: loginFunction,
         logout: logoutFunction,
     }
+
+console.log(authState.status)
+
     return (
         <AuthContext.Provider value={data}>
             {authState.status === "done" ? children : <p>Loading...</p>}

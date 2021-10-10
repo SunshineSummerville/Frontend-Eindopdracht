@@ -1,11 +1,13 @@
-import React, {useState} from 'react';
+import React, {useContext,useState} from 'react';
 import {  useForm } from "react-hook-form";
 import styles from './SignInForm.module.css';
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {AuthContext} from "../../context/AuthContext";
 
 
 export default function SignInForm() { //TODO eerst checken of gebruiker al bestaat
+    // const {login} = useContext (AuthContext);
     const { register, handleSubmit, errors } = useForm();
     const [loginSucces, setLoginSucces] = useState (false);
     const [loading, setLoading] = useState(false);
@@ -22,6 +24,7 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
 
 
             });
+            // login(result.data.accessToken);
             localStorage.setItem('user_id', JSON.stringify(result.data) );
             localStorage.setItem("accesToken", result.data.accessToken);
             //console.log(JSON.stringify(result.data));

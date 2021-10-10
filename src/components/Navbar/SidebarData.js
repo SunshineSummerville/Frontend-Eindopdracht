@@ -64,4 +64,10 @@ export const SidebarData = [
         icon: <FaIcons.FaCartPlus />,
         className: 'nav-text'
     },
+    {
+        title: 'Reservation History',
+        path: '/reservationhistory',
+        icon: <FaIcons.FaClipboardList />,
+        className: 'nav-text'
+    },
 ]

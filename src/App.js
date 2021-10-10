@@ -14,25 +14,13 @@ import SignIn from "./pages/SignIn";
 import Profile from "./pages/ProfilePage";
 import Navbar from "./components/Navbar/Navbar";
 import HandymanSignup from "./pages/HandymanSignUp";
+import ReservationHistory from "./pages/ReservationHistory";
 import Searchbar from "./components/Searchbar/Searchbar";
 import axios from "axios";
 
 
 
-axios.interceptors.request.use(function (config) {
-  let currentUser = localStorage.getItem('currentUser');
-  // console.log(currentUser)
 
-  if (currentUser) {
-    currentUser =  JSON.parse(currentUser)
-    // console.log(currentUser.accessToken)
-
-    config.headers.Authorization =  currentUser.tokenType + " " + currentUser.accessToken;
-  }
-
-
-  return config;
-});
 
 export default function App() {
 
@@ -69,6 +57,9 @@ export default function App() {
               <li>
                 <Link to="/Shoppingcart">Shopping Cart</Link>
               </li>
+              <li>
+                <Link to="/reservationhistory">Reservation History</Link>
+              </li>
             </ul>
           </Navbar>
 
@@ -98,6 +89,9 @@ export default function App() {
             </Route>
             <Route path="/Shoppingcart">
               <Services />
+            </Route>
+            <Route path="/reservationhistory">
+              <ReservationHistory />
             </Route>
             <Route path="/">
               <h1>404 not found</h1>
