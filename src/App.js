@@ -15,6 +15,7 @@ import Profile from "./pages/ProfilePage";
 import Navbar from "./components/Navbar/Navbar";
 import HandymanSignup from "./pages/HandymanSignUp";
 import ReservationHistory from "./pages/ReservationHistory";
+import ShoppingCart from "./pages/ShoppingCart";
 import Searchbar from "./components/Searchbar/Searchbar";
 import axios from "axios";
 
@@ -55,7 +56,7 @@ export default function App() {
                 <Link to="/profile">Profile</Link>
               </li>
               <li>
-                <Link to="/Shoppingcart">Shopping Cart</Link>
+                <Link to="/shoppingcart">Shopping Cart</Link>
               </li>
               <li>
                 <Link to="/reservationhistory">Reservation History</Link>
@@ -87,8 +88,8 @@ export default function App() {
             <Route path="/profile">
               <Profile />
             </Route>
-            <Route path="/Shoppingcart">
-              <Services />
+            <Route path="/categories/:categoryId/handymen/:handymanId/reservation">
+              <ShoppingCart />
             </Route>
             <Route path="/reservationhistory">
               <ReservationHistory />

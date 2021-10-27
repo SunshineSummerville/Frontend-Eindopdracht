@@ -60,7 +60,7 @@ export const SidebarData = [
     },
     {
         title: 'Shopping Cart',
-        path: '/services',
+        path: '/shoppingcart',
         icon: <FaIcons.FaCartPlus />,
         className: 'nav-text'
     },

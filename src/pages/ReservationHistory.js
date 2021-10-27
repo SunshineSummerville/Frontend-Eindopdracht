@@ -12,7 +12,7 @@ import axios from "axios";
 
 export default function ReservationHistory(){
 
-    const [reservations,setReservations] = useState([])
+    const [reservations,setReservations] = useState([]);
 
     useEffect(()=>{
         async function getReservations(){
@@ -28,7 +28,7 @@ export default function ReservationHistory(){
             console.log(response.data);
         }
 
-        getReservations()
+        getReservations();
 
     },[])
 

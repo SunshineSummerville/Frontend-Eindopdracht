@@ -30,7 +30,7 @@ export default function Searchbar(props) {
     useEffect(() => {
 
 
-        console.log(users)
+        // console.log(users)
         async function fetchData() {
             setError(false);
 
