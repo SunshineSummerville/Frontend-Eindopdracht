@@ -1,41 +1,49 @@
-
-body{
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
-}
-
-form { /* nakijken welke de juiste is- de sign-up form hoort in een container te staan met de titel erin*/
-    max-width: 700px;
-    width: 100%;
-    background: gold;
-    padding: 25px 30px;
-    border-radius: 5px;
-
-}
-
 label,input {
     display: block;
     margin: 10px;
     border-color: #9b59b6;
+
 }
 
 
-form {
-    max-width: 500px;
-    margin: 0 auto;
-}
+/*body{*/
+/*    display: flex;*/
+/*    !*height: 100vh;*!*/
+/*    !*justify-content: center;*!*/
+/*    align-items: center;*/
+/*    padding: 10px;*/
+/*    background: linear-gradient(135deg, #71b7e6, #9b59b6);*/
+/*}*/
 
-h1 {
-    font-weight: 80;
-    text-align: left;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgb(79, 98, 148);
-}
+/*.signupForm { !* nakijken welke de juiste is- de sign-up form hoort in een container te staan met de titel erin*!*/
+/*    max-width: 700px;*/
+/*    width: 100%;*/
+/*    background: gold;*/
+/*    padding: 25px 30px;*/
+/*    border-radius: 5px;*/
 
-input.type {
-    background: linear-gradient(135deg, #71b7e6, #9b59b6);
-}
+/*}*/
+
+
+
+
+/*form {*/
+/*    max-width: 500px;*/
+/*    margin: 0 auto;*/
+/*}*/
+
+/*!*h1 {*!*/
+/*!*    font-weight: 80;*!*/
+/*!*    text-align: left;*!*/
+/*!*    padding-bottom: 10px;*!*/
+/*!*    border-bottom: 1px solid rgb(79, 98, 148);*!*/
+/*!*}*!*/
+
+/*input.type {*/
+/*    background: linear-gradient(135deg, #71b7e6, #9b59b6);*/
+/*}*/
+
+/*.title_gebruikersnaam {*/
+/*    font-weight: bold;*/
+/*    color: blue;*/
+/*}*/

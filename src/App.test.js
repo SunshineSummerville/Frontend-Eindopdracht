@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import styles from 'App.module.css';
 import App from './App';
 
 test('renders learn react link', () => {
