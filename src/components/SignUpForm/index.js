@@ -13,6 +13,7 @@ export default function SignUpForm(props) {
     // const [searchTerm, setSearchTerm] = useState("");
 
     //const userName = useState(")
+    console.log("hello world")
 
     async function onSubmit(data) {
         // e.preventDefault()
@@ -35,9 +36,9 @@ export default function SignUpForm(props) {
 
             });
 
-            console.log(result);
+            console.log("Login succes?",result);
             setRegisterSucces(true);
-            history.push("/signin");
+            history.replace("/signin");
         } catch (e) {
             console.error(e);
 

@@ -31,7 +31,7 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
             localStorage.setItem("accesToken", result.data.accessToken);
             //console.log(JSON.stringify(result.data));
             setLoginSucces(true);
-            if(history.action === "PUSH") {
+            if(history.action === "PUSH" || history.action === "REPLACE") {
                 history.goBack();
 
             }else{
