@@ -61,7 +61,6 @@ function AuthContextProvider({children}) {
         // console.log("DECODED", decoded)
         localStorage.setItem("token", JWToken);
         fetchUserData(JWToken);
-        history.push("/profile");
 
 
     }

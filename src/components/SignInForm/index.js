@@ -13,6 +13,7 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
     const [loading, setLoading] = useState(false);
     const history = useHistory();
 
+    console.log("kijken wat de history is",history.length, history.action)
 
 
     async function onSubmit (data)  {
@@ -30,7 +31,14 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
             localStorage.setItem("accesToken", result.data.accessToken);
             //console.log(JSON.stringify(result.data));
             setLoginSucces(true);
-            history.push("/profile");
+            if(history.action === "PUSH") {
+                history.goBack();
+
+            }else{
+                history.push("/profile");
+
+            }
+
 
              console.log(result);
         } catch (e) {
