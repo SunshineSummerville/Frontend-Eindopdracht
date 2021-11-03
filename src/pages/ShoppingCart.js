@@ -4,7 +4,16 @@ import axios from "axios";
 import {Link, useHistory,useParams} from "react-router-dom";
 import {AuthContext} from "../context/AuthContext";
 
-
+function readFile(file){
+    return new Promise((resolve, reject) => {
+        var fr = new FileReader();
+        fr.onload = () => {
+            resolve(fr.result )
+        };
+        fr.onerror = reject;
+        fr.readAsDataURL(file);
+    });
+}
 
 export default function ShoppingCart() {
     const params = useParams();
@@ -17,12 +26,15 @@ export default function ShoppingCart() {
     console.log("PARAMS", params)
 
     async function onSubmit(data) {
-        console.log("DATUM?", data.reservationDate)
+        console.log("DATA UIT FORMULIER", data)
+        const base64Image = await readFile(data.image[0]);
+        console.log(base64Image)
         const reservation = {
             reservationDate:data.reservationDate,
             categoryId:params.categoryId,
             handymanId:params.handymanId,
-            customerId:authState.user.id
+            customerId:authState.user.id,
+            image:base64Image
         }
         console.log("pakketje",reservation)
 
@@ -36,6 +48,7 @@ export default function ShoppingCart() {
             console.log("Is this the answer",response)
             if (response.status === 201) {
                 setNewReservationSucces(true)
+                history.push(`/reservations/${response.data.id}`)
             }
 
         } catch (e) {
@@ -91,6 +104,11 @@ export default function ShoppingCart() {
                        type="date"
                        min={minDate}
                        ref={register({required: true})}/>
+
+               <input name={"image"}
+                      type="file"
+                      ref={register()}
+               />
                 {errors.reservationDate &&
                 <span>This field is required</span>}
 

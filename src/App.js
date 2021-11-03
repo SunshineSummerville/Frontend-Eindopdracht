@@ -16,6 +16,7 @@ import Navbar from "./components/Navbar/Navbar";
 import HandymanSignup from "./pages/HandymanSignUp";
 import ReservationHistory from "./pages/ReservationHistory";
 import ShoppingCart from "./pages/ShoppingCart";
+import ReservationDetails from "./pages/ReservationDetails";
 import Searchbar from "./components/Searchbar/Searchbar";
 import axios from "axios";
 
@@ -61,6 +62,9 @@ export default function App() {
               <li>
                 <Link to="/reservationhistory">Reservation History</Link>
               </li>
+              <li>
+                <Link to="/reservationdetails">Resrvation Details</Link>
+              </li>
             </ul>
           </Navbar>
 
@@ -93,6 +97,9 @@ export default function App() {
             </Route>
             <Route path="/reservationhistory">
               <ReservationHistory />
+            </Route>
+            <Route path="/reservations/:reservationId" >
+              <ReservationDetails />
             </Route>
             <Route path="/">
               <h1>404 not found</h1>

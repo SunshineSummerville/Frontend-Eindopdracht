@@ -16,15 +16,15 @@ import {Link} from "react-router-dom"
 export default function Services(){
 
     // const {activeLanguage} = useContext(LanguageContext)
-    const [categories, setCategories] = useState([])
-    const [selectedCategory, setSelectedCategory] = useState({})
+    const [categories, setCategories] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState({});
     console.log(selectedCategory)
 
     useEffect (()=> {
         async function getCategories() {
             const result = await axios.get("http://localhost:8080/api/categories");
 
-            setCategories(result.data)
+            setCategories(result.data);
             // console.log("hai de antwoord van je get request hiero",result.data);
         }
 
