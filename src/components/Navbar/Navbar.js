@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import * as FaIcons from "react-icons/fa"; /* FA Font Awesome icons*/
 import * as AiIcons from "react-icons/ai";
 import {Link} from 'react-router-dom';
@@ -9,9 +9,13 @@ import Searchbar from "../Searchbar/Searchbar";
 import Header from "../ShoppingCart/Header";
 import Basket from "../ShoppingCart/Basket";
 import Main from "../ShoppingCart/Main";
+import {AuthContext} from "../../context/AuthContext";
 
 function Navbar (props) {
-    const [sidebar, setSidebar] = useState(false)
+    const [sidebar, setSidebar] = useState(false);
+    const {authState} = useContext (AuthContext);
+    console.log("AUTH IN NAVBAR",authState)
+
 
 
     const showSidebar = () => setSidebar(!sidebar)
@@ -39,15 +43,23 @@ function Navbar (props) {
                             <AiIcons.AiOutlineClose />
                         </Link>
                     </li>
-                    {SidebarData.map((item, index) => {
-                        return (
-                            <li key={index} className={item.className}>
-                                <Link to={item.path}>
-                                    {item.icon}
-                                    <span>{item.title}</span>
-                                </Link>
-                            </li>
-                        )
+
+                    {SidebarData.filter((item) => {
+                        console.log("SHOW WHEN NOT LOGGED IN",item.notLoggedIn,"SHOW WHEN LOGGED IN",item.loggedIn, " LOGGED IN NOW?",authState.user !== null, "RESULT",item.notLoggedIn === (authState.user === null) || item.loggedIn === (authState.user !== null) )
+
+                        return item.notLoggedIn === (authState.user === null) || item.loggedIn === (authState.user !== null)
+                    }).map((item, index) => {
+
+                            return (
+                                <li key={index} className={item.className}>
+                                    <Link to={item.path}>
+                                        {item.icon}
+                                        <span>{item.title}</span>
+                                    </Link>
+                                </li>
+                            )
+
+
                     })}
                 </ul>
             </nav>
