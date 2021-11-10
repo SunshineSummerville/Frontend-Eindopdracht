@@ -39,11 +39,11 @@ export default function ReservationDetails(){
         <div className= 'reservation details'>
             <h2>Reservation Details</h2>
             {reservationDetails && <img src={reservationDetails.image} />}
-            {/*<div>*/}
-            {/*    {reservationDetails((reservation)=> {*/}
-            {/*        console.log(reservation)*/}
-            {/*    })}*/}
-            {/*        </div>*/}
+            <div>
+                {reservationDetails((reservation)=> {
+                    console.log("MY RESERVATION",reservation)
+                })}
+                    </div>
         </div>
     )
 

@@ -1,7 +1,6 @@
 import React from "react";
 import './App.module.css';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Link
@@ -17,18 +16,11 @@ import HandymanSignup from "./pages/HandymanSignUp";
 import ReservationHistory from "./pages/ReservationHistory";
 import ShoppingCart from "./pages/ShoppingCart";
 import ReservationDetails from "./pages/ReservationDetails";
-import Searchbar from "./components/Searchbar/Searchbar";
-import axios from "axios";
-
-
-
-
 
 export default function App() {
 
 
   return (
-      <Router>
         <div>
           <Navbar>
             <ul>
@@ -106,7 +98,6 @@ export default function App() {
             </Route>
           </Switch>
         </div>
-      </Router>
   );
 }
 

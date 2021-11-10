@@ -39,7 +39,7 @@ export default function ReservationHistory(){
             <h2>ReservationHistory</h2>
             <div>
                 {reservations.map((reservation)=>{
-                    console.log(reservation)
+                    console.log("OVERVIEW OF ALL RESERVATIONS",reservation)
                     return <li>
                         {reservation.reservationDate} - {reservation.category.name}
                     </li>
