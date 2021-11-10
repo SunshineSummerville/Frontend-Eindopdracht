@@ -2,7 +2,6 @@ import React, {useEffect, useState, useContext} from 'react'
 import axios from "axios";
 import {Link} from "react-router-dom";
 import {LanguageContext} from "../context/LanguageContext";
-import {get} from "react-hook-form";
 
 //[] Dit component moet iets doen zodra de pagina wordt weergegeven:
 //      useEffect gebruik console.log om te zien of het werkt

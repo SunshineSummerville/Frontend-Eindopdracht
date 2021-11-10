@@ -13,7 +13,7 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
     const [loading, setLoading] = useState(false);
     const history = useHistory();
 
-    console.log("kijken wat de history is",history.length, history.action)
+    // console.log("kijken wat de history is",history.length, history.action)
 
 
     async function onSubmit (data)  {
@@ -29,7 +29,6 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
             login(result.data.accessToken);
             localStorage.setItem('user_id', JSON.stringify(result.data) );
             localStorage.setItem("accesToken", result.data.accessToken);
-            //console.log(JSON.stringify(result.data));
             setLoginSucces(true);
             if(history.action === "PUSH" || history.action === "REPLACE") {
                 history.goBack();
@@ -40,15 +39,11 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
             }
 
 
-             console.log(result);
         } catch (e) {
-            console.error(e);
+            // console.error(e); Moet er nog iets met de error gebeuren?
 
         }
         setLoading(false);
-         //console.log(currentUser)
-
-        //console.log(data)
 
     }
 

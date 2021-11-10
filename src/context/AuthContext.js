@@ -7,13 +7,11 @@ export const AuthContext = createContext({});
 function AuthContextProvider({children}) {
     const history = useHistory();
     const [authState, setAuthState] = useState({user: null, status: "pending"});
-    console.log("AUTH", authState)
 
     async function fetchUserData(JWToken) {
         const decoded = jwt_Decode(JWToken);
         const username = decoded.sub;
         localStorage.setItem("token", JWToken)
-        console.log("USERid", username, "DECODED", decoded)
 
         try {
             const result = await axios.get(`http://localhost:8080/api/user/${username}`, {
@@ -22,7 +20,6 @@ function AuthContextProvider({children}) {
                     Authorization: `Bearer ${JWToken}`,
                 }
             })
-             console.log(" fetchUserdata waar ben je?",result)
             setAuthState({
                 user: {
                     firstname: result.data.firstname,
@@ -30,6 +27,7 @@ function AuthContextProvider({children}) {
                     username: result.data.username,
                     email: result.data.email,
                     id: result.data.id,
+                    roles: result.data.roles
 
                 },
                 token:JWToken,
@@ -37,9 +35,7 @@ function AuthContextProvider({children}) {
             });
 
         } catch (e) {
-            console.error(e)
             logoutFunction();
-            console.log("Hallo")
         }
     }
 
@@ -57,8 +53,6 @@ function AuthContextProvider({children}) {
     }, [])
 
     async function loginFunction(JWToken) {
-        console.log(JWToken)
-        // console.log("DECODED", decoded)
         localStorage.setItem("token", JWToken);
         fetchUserData(JWToken);
 
@@ -67,7 +61,6 @@ function AuthContextProvider({children}) {
 
 
     function logoutFunction() {
-        console.log("LOGOUT")
         localStorage.clear();
         setAuthState({user: null, token: null, status: "done"});
         history.push("/");
@@ -80,7 +73,6 @@ function AuthContextProvider({children}) {
         logout: logoutFunction,
     }
 
-// console.log(authState.status)
 
     return (
         <AuthContext.Provider value={data}>

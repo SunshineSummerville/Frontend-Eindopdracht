@@ -38,7 +38,7 @@ export default function ReservationDetails(){
     return (
         <div className= 'reservation details'>
             <h2>Reservation Details</h2>
-            {reservationDetails && <img src={reservationDetails.image} />}
+            {reservationDetails && <img src={reservationDetails.image} alt="Your uploaded file" />}
             <div>
                 {reservationDetails((reservation)=> {
                     console.log("MY RESERVATION",reservation)

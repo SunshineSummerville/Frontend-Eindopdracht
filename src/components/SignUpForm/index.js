@@ -10,15 +10,10 @@ export default function SignUpForm(props) {
     const [registerSucces, setRegisterSucces] = useState (false);
     const [loading, setLoading] = useState(false);
     const history = useHistory();
-    // const [searchTerm, setSearchTerm] = useState("");
 
-    //const userName = useState(")
-    console.log("hello world")
 
     async function onSubmit(data) {
-        // e.preventDefault()
         setLoading(true);
-        console.log("DATA ZIT DE ROLE ERIN",data)
 
 
         try {
@@ -38,11 +33,9 @@ export default function SignUpForm(props) {
 
             });
 
-            console.log("Login succes?",result);
             setRegisterSucces(true);
             history.replace("/signin");
         } catch (e) {
-            console.error(e);
 
         }
         setLoading(false);
