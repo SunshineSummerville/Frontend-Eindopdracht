@@ -12,7 +12,6 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Profile from "./pages/ProfilePage";
 import Navbar from "./components/Navbar/Navbar";
-import HandymanSignup from "./pages/HandymanSignUp";
 import ReservationHistory from "./pages/ReservationHistory";
 import ShoppingCart from "./pages/ShoppingCart";
 import ReservationDetails from "./pages/ReservationDetails";
@@ -36,9 +35,7 @@ export default function App() {
               <li>
                 <Link to="/Handymen">Handymen</Link>
               </li>
-              <li>
-              <Link to="/HandymanSignup">HandymanSignup</Link>
-              </li>
+
               <li>
                 <Link to="/signup">Sign Up</Link>
               </li>
@@ -74,9 +71,6 @@ export default function App() {
             </Route>
             <Route path="/signin">
               <SignIn />
-            </Route>
-            <Route path="/HandymanSignup">
-              <HandymanSignup />
             </Route>
             <Route path="/signup">
               <SignUp />

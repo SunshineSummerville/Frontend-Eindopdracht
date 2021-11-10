@@ -30,15 +30,6 @@ export const SidebarData = [
 
     },
     {
-        title: 'Handyman Sign up',
-        path: '/handymansignup',
-        icon: <IoIcons.IoMdPeople />,
-        className: 'nav-text',
-        notLoggedIn: true,
-        loggedIn: false
-
-    },
-    {
         title: 'Sign in',
         path: '/signin',
         icon: <IoIcons.IoMdPeople />,

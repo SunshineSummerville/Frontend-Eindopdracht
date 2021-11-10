@@ -18,6 +18,8 @@ export default function SignUpForm(props) {
     async function onSubmit(data) {
         // e.preventDefault()
         setLoading(true);
+        console.log("DATA ZIT DE ROLE ERIN",data)
+
 
         try {
             const result = await axios.post('http://localhost:8080/api/auth/signup', {
@@ -31,7 +33,7 @@ export default function SignUpForm(props) {
                 housenumber: data.housenumber,
                 postalcode: data.postalcode,
                 provincie: data.provincie,
-                role: ["user"]
+                role: [data.role]
 
 
             });
@@ -45,7 +47,6 @@ export default function SignUpForm(props) {
         }
         setLoading(false);
 
-        console.log(data)
 
     }
 
@@ -56,6 +57,11 @@ export default function SignUpForm(props) {
                 className={styles.signupForm}
                 onSubmit={handleSubmit(onSubmit)}
             >
+                <label htmlFor="user"> User </label>
+                <input type="radio" id="user" name="role" value="user" ref={register}/>
+                <label htmlFor="handyman"> Handyman </label>
+                <input type="radio" id="handyman" name="role" value="handyman" ref={register}/>
+
                 <label
                     className={styles.title_gebruikersnaam}
                     htmlFor="userName">Username</label>
