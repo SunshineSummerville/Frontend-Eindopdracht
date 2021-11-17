@@ -15,47 +15,14 @@ import Navbar from "./components/Navbar/Navbar";
 import ReservationHistory from "./pages/ReservationHistory";
 import ShoppingCart from "./pages/ShoppingCart";
 import ReservationDetails from "./pages/ReservationDetails";
+import MyServices from "./pages/MyServices";
 
 export default function App() {
 
 
   return (
         <div>
-          <Navbar>
-            <ul>
-              <li>
-
-              </li>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/services">Products</Link>
-              </li>
-              <li>
-                <Link to="/Handymen">Handymen</Link>
-              </li>
-
-              <li>
-                <Link to="/signup">Sign Up</Link>
-              </li>
-              <li>
-                <Link to="/signin">Sign In</Link>
-              </li>
-              <li>
-                <Link to="/profile">Profile</Link>
-              </li>
-              <li>
-                <Link to="/shoppingcart">Shopping Cart</Link>
-              </li>
-              <li>
-                <Link to="/reservationhistory">Reservation History</Link>
-              </li>
-              <li>
-                <Link to="/reservationdetails">Resrvation Details</Link>
-              </li>
-            </ul>
-          </Navbar>
+          <Navbar/>
 
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -86,6 +53,9 @@ export default function App() {
             </Route>
             <Route path="/reservations/:reservationId" >
               <ReservationDetails />
+            </Route>
+            <Route path="/myservices" >
+              <MyServices />
             </Route>
             <Route path="/">
               <h1>404 not found</h1>

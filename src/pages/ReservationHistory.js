@@ -1,5 +1,7 @@
-import React,{useEffect,useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import axios from "axios";
+import {AuthContext} from "../context/AuthContext";
+import {Link} from "react-router-dom";
 //Dit component moet iets doen zodra de pagina wordt weergegeven:
 // useEffect gebruik console.log om te zien of het werkt
 //Data ophalen,
@@ -13,19 +15,25 @@ import axios from "axios";
 export default function ReservationHistory(){
 
     const [reservations,setReservations] = useState([]);
+    const {authState} = useContext (AuthContext);
+
+    console.log("AUTH IN RESERVATIONHISTORY", authState)
+
+
 
     useEffect(()=>{
         async function getReservations(){
-            const token = localStorage.getItem("accesToken")
-            console.log(token)
-            const response = await axios.get("http://localhost:8080/api/user/1/reservations",{
-                headers:{
-                    Authorization:"Bearer " + token
+            const userId = authState.user.id
+
+            const response = await axios.get(`http://localhost:8080/api/user/${userId}/reservations`,{
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${authState.token}`,
                 }
             })
             setReservations(response.data);
 
-            console.log(response.data);
+            console.log("RESPONSE?",response.data);
         }
 
         getReservations();
@@ -41,7 +49,8 @@ export default function ReservationHistory(){
                 {reservations.map((reservation)=>{
                     console.log("OVERVIEW OF ALL RESERVATIONS",reservation)
                     return <li>
-                        {reservation.reservationDate} - {reservation.category.name}
+                        {reservation.id} - {reservation.reservationDate} - {reservation.category.name}
+                        <Link to={`/reservations/${reservation.id}`} ><button> See details</button></Link>
                     </li>
                 })}
             </div>

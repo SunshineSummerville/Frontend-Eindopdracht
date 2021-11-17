@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState,} from 'react'
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 import {AuthContext} from "../context/AuthContext";
 
@@ -34,16 +34,22 @@ export default function ReservationDetails(){
     },[])
 
     console.log("DETAILS", reservationDetails)
+    console.log("ID", reservationDetails && reservationDetails.id)
+
 
     return (
         <div className= 'reservation details'>
             <h2>Reservation Details</h2>
             {reservationDetails && <img src={reservationDetails.image} alt="Your uploaded file" />}
-            <div>
-                {reservationDetails((reservation)=> {
-                    console.log("MY RESERVATION",reservation)
-                })}
-                    </div>
+            <p>Reserveringsnummer: { reservationDetails && reservationDetails.id}</p>
+            <p>Datum: { reservationDetails && reservationDetails.reservationDate}</p>
+            <p>Category: { reservationDetails && reservationDetails.category.name}</p>
+            <p>Contact gegevens: </p>
+            <p>Handyman: { reservationDetails && reservationDetails.handyman.firstname} - { reservationDetails && reservationDetails.handyman.lastname}</p>
+                <p>Email: { reservationDetails && reservationDetails.handyman.email}</p>
+                <p>Telefoonnummer: { reservationDetails && reservationDetails.handyman.phonenumber}</p>
+
+
         </div>
     )
 
