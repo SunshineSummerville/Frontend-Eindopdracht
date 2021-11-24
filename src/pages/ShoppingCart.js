@@ -84,7 +84,7 @@ export default function ShoppingCart() {
     //
     }
 
-    // /categories/painter/handymen/2/reservation
+
     const today= new Date()
     console.log(today.getDate())
     const minDate= `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
