@@ -3,19 +3,18 @@ import './App.module.css';
 import {
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import Home from './pages/Home'
 import Services from "./pages/Services";
 import Handymen from "./pages/Handymen";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
-import Profile from "./pages/ProfilePage";
 import Navbar from "./components/Navbar/Navbar";
 import ReservationHistory from "./pages/ReservationHistory";
 import ShoppingCart from "./pages/ShoppingCart";
 import ReservationDetails from "./pages/ReservationDetails";
 import MyServices from "./pages/MyServices";
+
 
 export default function App() {
 
@@ -24,8 +23,6 @@ export default function App() {
         <div>
           <Navbar/>
 
-          {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
           <Switch>
             <Route exact path="/">
               <Home />
@@ -42,9 +39,6 @@ export default function App() {
             <Route path="/signup">
               <SignUp />
             </Route>
-            <Route path="/profile">
-              <Profile />
-            </Route>
             <Route path="/categories/:categoryId/handymen/:handymanId/reservation">
               <ShoppingCart />
             </Route>
@@ -60,6 +54,7 @@ export default function App() {
             <Route path="/">
               <h1>404 not found</h1>
             </Route>
+
           </Switch>
         </div>
   );

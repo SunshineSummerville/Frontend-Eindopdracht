@@ -47,42 +47,7 @@ export const SidebarData = [
         loggedIn: false
 
     },
-    {
-        title: 'Profile',
-        path: '/profile',
-        icon: <IoIcons.IoMdPeople />,
-        className: 'nav-text',
-        notLoggedIn: false,
-        loggedIn: true
 
-    },
-    {
-        title: 'Messages',
-        path: '/messages',
-        icon: <FaIcons.FaEnvelopeOpenText />,
-        className: 'nav-text',
-        notLoggedIn: false,
-        loggedIn: true
-
-    },
-    {
-        title: 'Support',
-        path: '/support',
-        icon: <IoIcons.IoMdHelpCircle />,
-        className: 'nav-text',
-        notLoggedIn: true,
-        loggedIn: true
-
-    },
-    {
-        title: 'Shopping Cart',
-        path: '/shoppingcart',
-        icon: <FaIcons.FaCartPlus />,
-        className: 'nav-text',
-        notLoggedIn: true,
-        loggedIn: true
-
-    },
     {
         title: 'Reservation History',
         path: '/reservationhistory',

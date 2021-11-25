@@ -18,29 +18,29 @@ export default function ReservationDetails() {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${authState.token}`,
                 }
-            })
+            });
             setReservationDetails(result.data);
             setNewdate(result.data.reservationDate);
         }
 
-        getReservationDetails()
+        getReservationDetails();
     }, [])
 
 
     const changeEditmode = () => {
-        setEditmode(true)
-    }
+        setEditmode(true);
+    };
 
     const changeTheDate = (event) => {
         setNewdate(event.target.value);
-    }
+    };
 
-    const today = new Date()
-    const minDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
+    const today = new Date();
+    const minDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
 
     const saveTheDate = () => {
         modifyReservation();
-    }
+    };
 
     async function modifyReservation() {
         const requestbody = {
@@ -51,10 +51,10 @@ export default function ReservationDetails() {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${authState.token}`,
             }
-        })
+        });
 
-        setReservationDetails(response.data)
-        setEditmode(false)
+        setReservationDetails(response.data);
+        setEditmode(false);
 
     }
 
@@ -76,7 +76,7 @@ export default function ReservationDetails() {
 
 
         </div>
-    )
+    );
 
 
 }

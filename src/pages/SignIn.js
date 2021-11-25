@@ -7,7 +7,7 @@ export default function SignIn(){
             <div>
                 <h2>SignIn</h2>
                 <SignInForm />
-            </div>
+            </div>;
 
         </>
 

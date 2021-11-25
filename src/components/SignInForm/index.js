@@ -13,8 +13,6 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
     const [loading, setLoading] = useState(false);
     const history = useHistory();
 
-    // console.log("kijken wat de history is",history.length, history.action)
-
 
     async function onSubmit (data)  {
         setLoading(true);
@@ -40,12 +38,12 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
 
 
         } catch (e) {
-            // console.error(e); Moet er nog iets met de error gebeuren?
+            // console.error(e); @TODO Moet er nog iets met de error gebeuren?
 
         }
         setLoading(false);
 
-    }
+    };
 
 
     return(
@@ -76,7 +74,7 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
             <p> Don't have an account yet? Please <Link to="/signup">register.</Link> first</p>
 
         </>
-    ) ;
+    );
 
 
 }

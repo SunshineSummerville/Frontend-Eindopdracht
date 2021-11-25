@@ -5,15 +5,12 @@ import {Link} from 'react-router-dom';
 import {SidebarData} from "./SidebarData";
 import "./Navbar.css";
 import {IconContext} from "react-icons";
-import Header from "../ShoppingCart/Header";
-import Basket from "../ShoppingCart/Basket";
-import Main from "../ShoppingCart/Main";
 import {AuthContext} from "../../context/AuthContext";
 
 function Navbar(props) {
     const [sidebar, setSidebar] = useState(false);
     const {authState, logout} = useContext(AuthContext);
-    const showSidebar = () => setSidebar(!sidebar)
+    const showSidebar = () => setSidebar(!sidebar);
 
 
     return (
@@ -24,11 +21,6 @@ function Navbar(props) {
                         <FaIcons.FaBars onClick={showSidebar}/>
                     </Link>
 
-                    <Header></Header>
-                    <div className="row">
-                        <Main></Main>
-                        <Basket></Basket>
-                    </div>
                     <button onClick={logout}> Logout</button>
                 </div>
                 <nav className={sidebar ? 'nav-menu space active' : 'nav-menu'}>
@@ -40,7 +32,7 @@ function Navbar(props) {
                         </li>
 
                         {SidebarData.filter((item) => {
-                            return item.notLoggedIn === (authState.user === null) || item.loggedIn === (authState.user !== null)
+                            return item.notLoggedIn === (authState.user === null) || item.loggedIn === (authState.user !== null);
                         }).map((item, index) => {
 
                             return (
@@ -50,7 +42,7 @@ function Navbar(props) {
                                         <span>{item.title}</span>
                                     </Link>
                                 </li>
-                            )
+                            );
 
 
                         })}

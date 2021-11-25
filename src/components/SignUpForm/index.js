@@ -36,12 +36,13 @@ export default function SignUpForm(props) {
             setRegisterSucces(true);
             history.replace("/signin");
         } catch (e) {
+            //@TODO do we need something here?
 
         }
         setLoading(false);
 
 
-    }
+    };
 
 
     return (

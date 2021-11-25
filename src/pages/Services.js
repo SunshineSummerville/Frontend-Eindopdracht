@@ -2,21 +2,12 @@ import React, {useEffect, useState} from 'react'
 import axios from "axios";
 import {Link} from "react-router-dom"
 
-//[] Dit component moet iets doen zodra de pagina wordt weergegeven:
-//      useEffect gebruik console.log om te zien of het werkt
-
-//[] Data ophalen,
-//      async function maken en aanroepen. dan axios , url gebruiken en dan response loggen
-//      console.log - binnen de async functie anders krijg je undefined.
-//[] Data opslaan
-//      State aanmaken en daarvan de setter gebruiken
-//[] Data weergeven
-//      Return met de JSX {} en .map
 
 export default function Services(){
 
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState({});
+
 
     useEffect (()=> {
         async function getCategories() {

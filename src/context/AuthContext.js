@@ -11,7 +11,7 @@ function AuthContextProvider({children}) {
     async function fetchUserData(JWToken) {
         const decoded = jwt_Decode(JWToken);
         const username = decoded.sub;
-        localStorage.setItem("token", JWToken)
+        localStorage.setItem("token", JWToken);
 
         try {
             const result = await axios.get(`http://localhost:8080/api/user/${username}`, {
@@ -19,7 +19,7 @@ function AuthContextProvider({children}) {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${JWToken}`,
                 }
-            })
+            });
             setAuthState({
                 user: {
                     firstname: result.data.firstname,
@@ -37,7 +37,7 @@ function AuthContextProvider({children}) {
         } catch (e) {
             logoutFunction();
         }
-    }
+    };
 
     useEffect(() => {
         const token = localStorage.getItem("token")
@@ -50,28 +50,28 @@ function AuthContextProvider({children}) {
                 status: "done"
             });
         }
-    }, [])
+    }, []);
 
     async function loginFunction(JWToken) {
         localStorage.setItem("token", JWToken);
         fetchUserData(JWToken);
 
 
-    }
+    };
 
 
     function logoutFunction() {
         localStorage.clear();
         setAuthState({user: null, token: null, status: "done"});
         history.push("/");
-    }
+    };
 
     const data = {
         ...authState,
         authState: authState,
         login: loginFunction,
         logout: logoutFunction,
-    }
+    };
 
 
     return (
