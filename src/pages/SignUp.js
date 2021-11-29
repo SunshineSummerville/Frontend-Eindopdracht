@@ -2,10 +2,10 @@ import React from 'react'
 import SignUpForm from "../components/SignUpForm";
 
 export default function SignUp(){
-    return <div>
+    return <section>
         <h2>SignUp</h2>
         <SignUpForm />
-    </div>;
+    </section>;
 
 
 }

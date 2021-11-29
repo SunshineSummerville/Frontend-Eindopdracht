@@ -26,21 +26,21 @@ export default function ReservationHistory(){
 
         getReservations();
 
-    },[])
+    },[authState.token, authState.user.id])
 
 
     return (
-        <div className= 'ReservationHistory'>
+        <section className= 'ReservationHistory'>
             <h2>ReservationHistory</h2>
-            <div>
+            <ul>
                 {reservations.map((reservation)=>{
-                    return <li>
+                    return <li key={reservation.id}>
                         {reservation.id} - {reservation.reservationDate} - {reservation.category.name}
                         <Link to={`/reservations/${reservation.id}`} ><button> See details</button></Link>
                     </li>
                 })}
-            </div>
-        </div>
+            </ul>
+        </section>
     );
 
 

@@ -26,7 +26,7 @@ export default function MyServices() {
             categoryId: categoryId
         };
         if (httpMethod === "post") {
-            const response = await axios.post(`http://localhost:8080/api/user/${handymanId}/categories`, requestbody, {
+            await axios.post(`http://localhost:8080/api/user/${handymanId}/categories`, requestbody, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${authState.token}`,
@@ -34,7 +34,7 @@ export default function MyServices() {
             });
 
         } else if (httpMethod === "delete") {
-            const response = await axios.delete(`http://localhost:8080/api/user/${handymanId}/categories`, {
+            await axios.delete(`http://localhost:8080/api/user/${handymanId}/categories`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${authState.token}`,
@@ -54,24 +54,24 @@ export default function MyServices() {
 
 
     return (
-        <div>
+        <form>
             {allCategories.map((category) => {
                 const isHandymanForThisCategory = category.handymen.some((handyman) => {
                     return handyman.id === handymanId
                 });
 
-                return <div key={category.id}>
+                return <label key={category.id}>
                     <input type="checkbox" id="" name=""
                            onChange={(event) => updateService(category.id, event.target.checked ? "post" : "delete")}
                            checked={isHandymanForThisCategory}/>
 
                     {category.name} - {category.jobDescription}
-                </div>
+                </label>
 
             })}
 
 
-        </div>
+        </form>
 
     );
 

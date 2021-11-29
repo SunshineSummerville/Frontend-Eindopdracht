@@ -32,9 +32,13 @@ export default function SignUpForm(props) {
 
 
             });
+            if (result){
+                setRegisterSucces(true);
+                history.replace("/signin");
 
-            setRegisterSucces(true);
-            history.replace("/signin");
+            }
+
+
         } catch (e) {
             //@TODO do we need something here?
 

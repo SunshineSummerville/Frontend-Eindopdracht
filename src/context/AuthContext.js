@@ -1,4 +1,4 @@
-import React, {createContext, useEffect, useState} from 'react';
+import React, {createContext, useEffect, useState, useCallback} from 'react';
 import {useHistory} from 'react-router-dom';
 import jwt_Decode from "jwt-decode";
 import axios from "axios";
@@ -8,7 +8,13 @@ function AuthContextProvider({children}) {
     const history = useHistory();
     const [authState, setAuthState] = useState({user: null, status: "pending"});
 
-    async function fetchUserData(JWToken) {
+    const logoutFunction = useCallback( function logoutFunction() {
+        localStorage.clear();
+        setAuthState({user: null, token: null, status: "done"});
+        history.push("/");
+    },[history]);
+
+    const fetchUserData = useCallback( async function fetchUserData(JWToken) {
         const decoded = jwt_Decode(JWToken);
         const username = decoded.sub;
         localStorage.setItem("token", JWToken);
@@ -37,20 +43,14 @@ function AuthContextProvider({children}) {
         } catch (e) {
             logoutFunction();
         }
-    };
+    },[logoutFunction]);
 
     useEffect(() => {
         const token = localStorage.getItem("token")
         if (token !== null && authState.user === null) {
             fetchUserData(token);
-        } else {
-            setAuthState({
-                user: null,
-                token:null,
-                status: "done"
-            });
         }
-    }, []);
+    }, [authState.user, fetchUserData]);
 
     async function loginFunction(JWToken) {
         localStorage.setItem("token", JWToken);
@@ -59,12 +59,6 @@ function AuthContextProvider({children}) {
 
     };
 
-
-    function logoutFunction() {
-        localStorage.clear();
-        setAuthState({user: null, token: null, status: "done"});
-        history.push("/");
-    };
 
     const data = {
         ...authState,

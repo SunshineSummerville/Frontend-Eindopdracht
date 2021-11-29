@@ -24,7 +24,11 @@ export default function ShoppingCart() {
 
 
     async function onSubmit(data) {
-        const base64Image = await readFile(data.image[0]);
+        let base64Image = null
+        if(data.image.length >=1){
+            base64Image = await readFile(data.image[0]);
+
+        }
         const reservation = {
             reservationDate:data.reservationDate,
             categoryId:params.categoryId,
@@ -59,7 +63,6 @@ export default function ShoppingCart() {
 
 
     return (
-        <>
             <form
 
                 onSubmit={handleSubmit(onSubmit)}
@@ -92,7 +95,6 @@ export default function ShoppingCart() {
             </form>
 
 
-        </>
     );
 
 

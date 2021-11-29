@@ -4,9 +4,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import Home from './pages/Home'
 import Services from "./pages/Services";
-import Handymen from "./pages/Handymen";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Navbar from "./components/Navbar/Navbar";
@@ -20,18 +18,16 @@ export default function App() {
 
 
   return (
-        <div>
+        <>
           <Navbar/>
 
           <Switch>
             <Route exact path="/">
-              <Home />
+              <Services />
+
             </Route>
             <Route path="/services">
               <Services />
-            </Route>
-            <Route path="/Handymen">
-              <Handymen />
             </Route>
             <Route path="/signin">
               <SignIn />
@@ -56,7 +52,7 @@ export default function App() {
             </Route>
 
           </Switch>
-        </div>
+        </>
   );
 }
 

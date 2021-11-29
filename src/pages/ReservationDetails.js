@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState,} from 'react'
-import {Link, useParams} from "react-router-dom";
+import { useParams} from "react-router-dom";
 import axios from "axios";
 import {AuthContext} from "../context/AuthContext";
 
@@ -24,7 +24,7 @@ export default function ReservationDetails() {
         }
 
         getReservationDetails();
-    }, [])
+    }, [authState.token, params.reservationId])
 
 
     const changeEditmode = () => {
@@ -60,7 +60,7 @@ export default function ReservationDetails() {
 
 
     return (
-        <div className='reservation details'>
+        <article className='reservation details'>
             <h2>Reservation Details</h2>
             {reservationDetails && <img src={reservationDetails.image} alt="Your uploaded file"/>}
             <p>Reserveringsnummer: {reservationDetails && reservationDetails.id}</p>
@@ -75,7 +75,7 @@ export default function ReservationDetails() {
             {editMode ? <button onClick={saveTheDate}>Save</button> : <button onClick={changeEditmode}>edit</button>}
 
 
-        </div>
+        </article>
     );
 
 

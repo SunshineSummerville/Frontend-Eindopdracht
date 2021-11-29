@@ -13,14 +13,6 @@ export const SidebarData = [
         loggedIn: true
     },
     {
-        title: 'Handymen',
-        path: '/Handymen',
-        icon: <IoIcons.IoIosPaper />,
-        className: 'nav-text',
-        notLoggedIn: true,
-        loggedIn: true
-    },
-    {
         title: 'Services',
         path: '/services',
         icon: <IoIcons.IoIosBusiness/>,

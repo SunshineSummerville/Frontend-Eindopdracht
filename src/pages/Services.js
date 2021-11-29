@@ -24,26 +24,28 @@ export default function Services(){
 
 
     return (
-        <div className= 'services'>
+        <section className= 'services'>
             <h2>Services</h2>
-            <div>
+            <ul>
                 {categories.map((category)=> {
                     return <li key={category.id} onClick={()=> setSelectedCategory(category)}>
                         {category.name} - {category.jobDescription}
                     </li>
 
                 })}
-            </div>
-            <div>
+            </ul>
+            <dialog>
                 <h2>{selectedCategory.name}</h2>
+                <ul>
                 {selectedCategory.handymen?.map((handyman)=>{
 
                     return <li key={handyman.id}>
                         {handyman.firstname} - {handyman.lastname} <Link to={`/categories/${selectedCategory.id}/handymen/${handyman.id}/reservation`} ><button> Book now</button></Link>
                     </li>
                 })}
-            </div>
-        </div>
+                </ul>
+            </dialog>
+        </section>
     );
 
 
