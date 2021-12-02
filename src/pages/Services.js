@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from "axios";
 import {Link} from "react-router-dom"
+import CategoryItem from "../components/CategoryItem";
 
 
 export default function Services(){
@@ -28,13 +29,11 @@ export default function Services(){
             <h2>Services</h2>
             <ul>
                 {categories.map((category)=> {
-                    return <li key={category.id} onClick={()=> setSelectedCategory(category)}>
-                        {category.name} - {category.jobDescription}
-                    </li>
+                    return <CategoryItem key={category.id} category={category} setSelectedCategory={setSelectedCategory}/>
 
                 })}
             </ul>
-            <dialog>
+            <menu>
                 <h2>{selectedCategory.name}</h2>
                 <ul>
                 {selectedCategory.handymen?.map((handyman)=>{
@@ -44,7 +43,7 @@ export default function Services(){
                     </li>
                 })}
                 </ul>
-            </dialog>
+            </menu>
         </section>
     );
 
