@@ -1,4 +1,4 @@
-import React, {createContext, useEffect, useState} from 'react';
+import React, {createContext, useEffect, useState, useCallback} from 'react';
 import {useHistory} from 'react-router-dom';
 import jwt_Decode from "jwt-decode";
 import axios from "axios";
@@ -7,13 +7,17 @@ export const AuthContext = createContext({});
 function AuthContextProvider({children}) {
     const history = useHistory();
     const [authState, setAuthState] = useState({user: null, status: "pending"});
-    console.log("AUTH", authState)
 
-    async function fetchUserData(JWToken) {
+    const logoutFunction = useCallback( function logoutFunction() {
+        localStorage.clear();
+        setAuthState({user: null, token: null, status: "done"});
+        history.push("/");
+    },[history]);
+
+    const fetchUserData = useCallback( async function fetchUserData(JWToken) {
         const decoded = jwt_Decode(JWToken);
         const username = decoded.sub;
-        localStorage.setItem("token", JWToken)
-        console.log("USERid", username, "DECODED", decoded)
+        localStorage.setItem("token", JWToken);
 
         try {
             const result = await axios.get(`http://localhost:8080/api/user/${username}`, {
@@ -21,8 +25,7 @@ function AuthContextProvider({children}) {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${JWToken}`,
                 }
-            })
-             console.log(" fetchUserdata waar ben je?",result)
+            });
             setAuthState({
                 user: {
                     firstname: result.data.firstname,
@@ -30,6 +33,7 @@ function AuthContextProvider({children}) {
                     username: result.data.username,
                     email: result.data.email,
                     id: result.data.id,
+                    roles: result.data.roles
 
                 },
                 token:JWToken,
@@ -37,51 +41,32 @@ function AuthContextProvider({children}) {
             });
 
         } catch (e) {
-            console.error(e)
             logoutFunction();
-            console.log("Hallo")
         }
-    }
+    },[logoutFunction]);
 
     useEffect(() => {
         const token = localStorage.getItem("token")
         if (token !== null && authState.user === null) {
             fetchUserData(token);
-        } else {
-            setAuthState({
-                user: null,
-                token:null,
-                status: "done"
-            });
         }
-    }, [])
+    }, [authState.user, fetchUserData]);
 
     async function loginFunction(JWToken) {
-        console.log(JWToken)
-        // console.log("DECODED", decoded)
         localStorage.setItem("token", JWToken);
         fetchUserData(JWToken);
-        history.push("/profile");
 
 
-    }
+    };
 
-
-    function logoutFunction() {
-        console.log("LOGOUT")
-        localStorage.clear();
-        setAuthState({user: null, token: null, status: "done"});
-        history.push("/");
-    }
 
     const data = {
         ...authState,
         authState: authState,
         login: loginFunction,
         logout: logoutFunction,
-    }
+    };
 
-// console.log(authState.status)
 
     return (
         <AuthContext.Provider value={data}>

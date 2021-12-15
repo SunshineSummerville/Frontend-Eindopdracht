@@ -14,7 +14,6 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
     const history = useHistory();
 
 
-
     async function onSubmit (data)  {
         setLoading(true);
 
@@ -28,21 +27,23 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
             login(result.data.accessToken);
             localStorage.setItem('user_id', JSON.stringify(result.data) );
             localStorage.setItem("accesToken", result.data.accessToken);
-            //console.log(JSON.stringify(result.data));
             setLoginSucces(true);
-            history.push("/profile");
+            if(history.action === "PUSH" || history.action === "REPLACE") {
+                history.goBack();
 
-             console.log(result);
+            }else{
+                history.push("/profile");
+
+            }
+
+
         } catch (e) {
-            console.error(e);
+            // console.error(e); @TODO Moet er nog iets met de error gebeuren?
 
         }
         setLoading(false);
-         //console.log(currentUser)
 
-        //console.log(data)
-
-    }
+    };
 
 
     return(
@@ -73,7 +74,7 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
             <p> Don't have an account yet? Please <Link to="/signup">register.</Link> first</p>
 
         </>
-    ) ;
+    );
 
 
 }

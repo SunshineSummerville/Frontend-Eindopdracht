@@ -10,13 +10,11 @@ export default function SignUpForm(props) {
     const [registerSucces, setRegisterSucces] = useState (false);
     const [loading, setLoading] = useState(false);
     const history = useHistory();
-    // const [searchTerm, setSearchTerm] = useState("");
 
-    //const userName = useState(")
 
     async function onSubmit(data) {
-        // e.preventDefault()
         setLoading(true);
+
 
         try {
             const result = await axios.post('http://localhost:8080/api/auth/signup', {
@@ -30,23 +28,25 @@ export default function SignUpForm(props) {
                 housenumber: data.housenumber,
                 postalcode: data.postalcode,
                 provincie: data.provincie,
-                role: ["user"]
+                role: [data.role]
 
 
             });
+            if (result){
+                setRegisterSucces(true);
+                history.replace("/signin");
 
-            console.log(result);
-            setRegisterSucces(true);
-            history.push("/signin");
+            }
+
+
         } catch (e) {
-            console.error(e);
+            //@TODO do we need something here?
 
         }
         setLoading(false);
 
-        console.log(data)
 
-    }
+    };
 
 
     return (
@@ -55,6 +55,11 @@ export default function SignUpForm(props) {
                 className={styles.signupForm}
                 onSubmit={handleSubmit(onSubmit)}
             >
+                <label htmlFor="user"> User </label>
+                <input type="radio" id="user" name="role" value="user" ref={register}/>
+                <label htmlFor="handyman"> Handyman </label>
+                <input type="radio" id="handyman" name="role" value="handyman" ref={register}/>
+
                 <label
                     className={styles.title_gebruikersnaam}
                     htmlFor="userName">Username</label>
