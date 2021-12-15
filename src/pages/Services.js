@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from "axios";
-import {Link} from "react-router-dom"
 import CategoryItem from "../components/CategoryItem";
+import HandymanItem from "../components/HandymanItem";
 
 
 export default function Services(){
@@ -38,9 +38,7 @@ export default function Services(){
                 <ul>
                 {selectedCategory.handymen?.map((handyman)=>{
 
-                    return <li key={handyman.id}>
-                        {handyman.firstname} - {handyman.lastname} <Link to={`/categories/${selectedCategory.id}/handymen/${handyman.id}/reservation`} ><button> Book now</button></Link>
-                    </li>
+                    return <HandymanItem key={handyman.id} handyman={handyman} selectedCategory={selectedCategory}/>
                 })}
                 </ul>
             </menu>

@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react'
 import axios from "axios";
 import {AuthContext} from "../context/AuthContext";
+import {isHandymanForCategory} from "../utils/logic";
 
 
 export default function MyServices() {
@@ -56,9 +57,7 @@ export default function MyServices() {
     return (
         <form>
             {allCategories.map((category) => {
-                const isHandymanForThisCategory = category.handymen.some((handyman) => {
-                    return handyman.id === handymanId
-                });
+                const isHandymanForThisCategory = isHandymanForCategory(category, handymanId)
 
                 return <label key={category.id}>
                     <input type="checkbox" id="" name=""

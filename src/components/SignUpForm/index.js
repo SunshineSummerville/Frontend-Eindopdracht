@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form";
 import styles from './SignUpForm.module.css';
 import axios from "axios";
 import {Link, useHistory} from "react-router-dom";
+import {emailPattern} from "../../utils/validation";
 
 
 export default function SignUpForm(props) {
@@ -86,7 +87,7 @@ export default function SignUpForm(props) {
 
                 <label htmlFor="email">Email</label>
                 <input name={"email"} type="text"
-                       ref={register({required: true, minLength: 2, pattern: /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/})}/>
+                       ref={register({required: true, minLength: 2, pattern: emailPattern})}/>
                 {errors.email && <span>This field is required</span>}
 
                 <label htmlFor="phoneNumber">Phonenumber</label>

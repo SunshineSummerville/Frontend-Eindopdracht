@@ -46,9 +46,12 @@ function AuthContextProvider({children}) {
     },[logoutFunction]);
 
     useEffect(() => {
+        if (authState.user!== null) return
         const token = localStorage.getItem("token")
         if (token !== null && authState.user === null) {
             fetchUserData(token);
+        }else {
+            setAuthState ({user: null, status: "done"})
         }
     }, [authState.user, fetchUserData]);
 
