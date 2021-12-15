@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form";
 import axios from "axios";
 import {Link, useHistory,useParams} from "react-router-dom";
 import {AuthContext} from "../context/AuthContext";
+import {formatMinDate} from "../utils/dateFunction";
 
 function readFile(file){
     return new Promise((resolve, reject) => {
@@ -59,7 +60,7 @@ export default function ShoppingCart() {
 
 
     const today= new Date();
-    const minDate= `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
+    const minDate= formatMinDate(today);
 
 
     return (

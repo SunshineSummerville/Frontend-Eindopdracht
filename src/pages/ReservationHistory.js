@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react'
 import axios from "axios";
 import {AuthContext} from "../context/AuthContext";
-import {Link} from "react-router-dom";
+import ReservationItem from "../components/ReservationItem";
 
 
 export default function ReservationHistory(){
@@ -34,10 +34,7 @@ export default function ReservationHistory(){
             <h2>ReservationHistory</h2>
             <ul>
                 {reservations.map((reservation)=>{
-                    return <li key={reservation.id}>
-                        {reservation.id} - {reservation.reservationDate} - {reservation.category.name}
-                        <Link to={`/reservations/${reservation.id}`} ><button> See details</button></Link>
-                    </li>
+                    return <ReservationItem key={reservation.id} reservation={reservation}/>
                 })}
             </ul>
         </section>

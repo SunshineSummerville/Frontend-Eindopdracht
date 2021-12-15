@@ -32,7 +32,7 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
                 history.goBack();
 
             }else{
-                history.push("/profile");
+                history.push("/");
 
             }
 

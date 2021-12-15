@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState,} from 'react'
 import { useParams} from "react-router-dom";
 import axios from "axios";
 import {AuthContext} from "../context/AuthContext";
+import {formatMinDate} from "../utils/dateFunction";
 
 
 export default function ReservationDetails() {
@@ -35,8 +36,8 @@ export default function ReservationDetails() {
         setNewdate(event.target.value);
     };
 
-    const today = new Date();
-    const minDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+    const today= new Date();
+    const minDate= formatMinDate(today);
 
     const saveTheDate = () => {
         modifyReservation();
