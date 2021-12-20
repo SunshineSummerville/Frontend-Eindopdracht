@@ -12,6 +12,8 @@ export default function ReservationDetails() {
     const [editMode, setEditmode] = useState(false);
     const [newDate, setNewdate] = useState();
 
+
+
     useEffect(() => {
         async function getReservationDetails() {
             const result = await axios.get(`http://localhost:8080/api/reservation/${params.reservationId}`, {
@@ -73,7 +75,7 @@ export default function ReservationDetails() {
             <p>Email: {reservationDetails && reservationDetails.handyman.email}</p>
             <p>Telefoonnummer: {reservationDetails && reservationDetails.handyman.phonenumber}</p>
 
-            {editMode ? <button onClick={saveTheDate}>Save</button> : <button onClick={changeEditmode}>edit</button>}
+            {authState.user.roles.some(role=>role.name === "ROLE_HANDYMAN") && (editMode ? <button onClick={saveTheDate}>Save</button> : <button onClick={changeEditmode}>edit</button>)}
 
 
         </article>
