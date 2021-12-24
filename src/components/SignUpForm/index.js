@@ -8,6 +8,7 @@ import {TextInput} from "../TextInput";
 import {SubmitButton} from "../SubmitButton";
 import {SuccessMessage} from "../SuccessMessags";
 import {LoadingMessage} from "../LoadingMessage";
+import "./SignUpForm.css";
 
 
 export default function SignUpForm(props) {
@@ -59,11 +60,12 @@ export default function SignUpForm(props) {
             <Form
                 onSubmit={(onSubmit)} handleSubmit={handleSubmit}
             >
-
-                <label htmlFor="user"> User </label>
-                <input type="radio" id="user" name="role" value="user" ref={register}/>
-                <label htmlFor="handyman"> Handyman </label>
-                <input type="radio" id="handyman" name="role" value="handyman" ref={register}/>
+                <div className={"user-role"}>
+                    <label htmlFor="user"> User </label>
+                    <input type="radio" id="user" name="role" value="user" ref={register}/>
+                    <label htmlFor="handyman"> Handyman </label>
+                    <input type="radio" id="handyman" name="role" value="handyman" ref={register}/>
+                </div>
 
                 <TextInput name={"username"} errors={errors} register={register} type={"text"} rules={{ required: true,minLength:2 }}/>
                 <TextInput name={"password"} errors={errors} register={register} type={"password"} rules={{ required: true,minLength:6 }}/>
@@ -81,7 +83,7 @@ export default function SignUpForm(props) {
                 {registerSucces === true &&  <SuccessMessage> Registered successfully </SuccessMessage>}
                 {loading === true && <LoadingMessage>  Loading</LoadingMessage>}
 
-                <p> Returning visitor? please sign in <Link to="/signin">here.</Link></p>
+                <p className={"returning"}> Returning visitor? please sign in <Link to="/signin">here.</Link></p>
 
             </Form>
 

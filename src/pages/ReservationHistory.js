@@ -3,6 +3,7 @@ import axios from "axios";
 import {AuthContext} from "../context/AuthContext";
 import ReservationItem from "../components/ReservationItem";
 import {PageTitle} from "../components/PageTitle";
+import "./ReservationHistory.css";
 
 
 export default function ReservationHistory(){

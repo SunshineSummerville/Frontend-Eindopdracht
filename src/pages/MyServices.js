@@ -3,6 +3,7 @@ import axios from "axios";
 import {AuthContext} from "../context/AuthContext";
 import {isHandymanForCategory} from "../utils/logic";
 import {PageTitle} from "../components/PageTitle";
+import "./MyServices.css";
 
 
 export default function MyServices() {
@@ -58,12 +59,12 @@ export default function MyServices() {
     return (
         <>
             <PageTitle title={"my services"}/>
-        <form>
+        <form className={"services-form"}>
             {allCategories.map((category) => {
                 const isHandymanForThisCategory = isHandymanForCategory(category, handymanId)
 
-                return <label key={category.id}>
-                    <input type="checkbox" id="" name=""
+                return <label className={"service"} key={category.id}>
+                    <input className={"service-checkbox"} type="checkbox" id="" name=""
                            onChange={(event) => updateService(category.id, event.target.checked ? "post" : "delete")}
                            checked={isHandymanForThisCategory}/>
 

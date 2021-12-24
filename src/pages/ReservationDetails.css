@@ -1,0 +1,30 @@
+.reservation-details{
+    max-width: 1500px;
+    margin:auto;
+    padding: 50px;
+
+}
+
+.reservation-picture{
+    max-width:600px;
+    margin-left: 10px;
+
+}
+
+.reservation-detail{
+    font-size: 18px;
+    padding: 10px;
+
+
+}
+
+.reservation-button{
+    font-size: 20px;
+    padding: 20px;
+    background-color: gold;
+    color: white;
+    margin-left: 10px;
+    border: none;
+    margin-top: 10px;
+
+}

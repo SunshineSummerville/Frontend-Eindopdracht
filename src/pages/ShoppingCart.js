@@ -5,6 +5,10 @@ import {Link, useHistory,useParams} from "react-router-dom";
 import {AuthContext} from "../context/AuthContext";
 import {formatMinDate} from "../utils/dateFunction";
 import {PageTitle} from "../components/PageTitle";
+import {Form} from "../components/Form";
+import "./ShoppingCart.css";
+import {SubmitButton} from "../components/SubmitButton";
+import {SuccessMessage} from "../components/SuccessMessags";
 
 function readFile(file){
     return new Promise((resolve, reject) => {
@@ -67,37 +71,40 @@ export default function ShoppingCart() {
     return (
         <>
             <PageTitle title={"Book a handyman"}/>
-            <form
-
-                onSubmit={handleSubmit(onSubmit)}
+            <Form
+                onSubmit={(onSubmit)} handleSubmit={handleSubmit}
             >
-                <label
-                    htmlFor="reservationDate">Reservation Date</label>
-                <input name={"reservationDate"}
+
+                <label className={"input-label"}
+                       htmlFor="reservationDate">Reservation Date</label>
+                <input className={"form-input"}
+                       name={"reservationDate"}
                        type="date"
                        min={minDate}
                        ref={register({required: true})}/>
 
-               <input name={"image"}
-                      type="file"
-                      ref={register()}
-               />
+                <input className={"form-input"}
+                       name={"image"}
+                       type="file"
+                       ref={register()}
+                />
                 {errors.reservationDate &&
                 <span>This field is required</span>}
 
 
-                {newReservationSucces === true && <span> "Reservation made succesfully" </span>}
+                {newReservationSucces === true && <SuccessMessage> Reservation made successfully </SuccessMessage>}
                 {newReservationSucces === false && <span> "something went wrong, please try again" </span>}
 
 
-                {authState.user === null ? <p> Please sign in <Link to="/signin">here.</Link> or <Link to="/signup"> create an account </Link> </p> :
-                    <input type="submit"
+                {authState.user === null ?
+                    <p className={"signup-reminder"}> Please sign in <Link to="/signin">here.</Link> or <Link to="/signup"> create an account </Link> </p>
+                    :
+                    <SubmitButton>Sign up</SubmitButton>
+                }
 
-                />}
 
-
-            </form>
-            </>
+            </Form>
+        </>
 
 
     );

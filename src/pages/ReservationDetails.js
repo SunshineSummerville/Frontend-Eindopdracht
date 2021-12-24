@@ -4,6 +4,8 @@ import axios from "axios";
 import {AuthContext} from "../context/AuthContext";
 import {formatMinDate} from "../utils/dateFunction";
 import {PageTitle} from "../components/PageTitle";
+import "./ReservationDetails.css";
+import {FaFileImage} from "react-icons/fa";
 
 
 export default function ReservationDetails() {
@@ -64,19 +66,27 @@ export default function ReservationDetails() {
 
 
     return (
-        <article className='reservation details'>
-           <PageTitle title={"reservation details"}/>
-            {reservationDetails && <img src={reservationDetails.image} alt="Your uploaded file"/>}
-            <p>Reserveringsnummer: {reservationDetails && reservationDetails.id}</p>
-            {editMode ? <input onChange={changeTheDate} type="date" min={minDate} value={newDate}/> :
-                <p>Datum: {reservationDetails && reservationDetails.reservationDate}</p>}
-            <p>Category: {reservationDetails && reservationDetails.category.name}</p>
-            <p>Contact gegevens: </p>
-            <p>Handyman: {reservationDetails && reservationDetails.handyman.firstname} - {reservationDetails && reservationDetails.handyman.lastname}</p>
-            <p>Email: {reservationDetails && reservationDetails.handyman.email}</p>
-            <p>Telefoonnummer: {reservationDetails && reservationDetails.handyman.phonenumber}</p>
+        <article className={'reservation-details'}>
+            <PageTitle title={"reservation details"}/>
+            {reservationDetails?.image ? <img className={"reservation-picture"} src={reservationDetails.image} alt="Your uploaded file"/>
+                :
+                <p className={"reservation-detail"}>No uploaded image <FaFileImage/> </p>
+            }
+            <p className={"reservation-detail"}>Reserveringsnummer: {reservationDetails && reservationDetails.id}</p>
+            {editMode ? <input className={"form-input"} onChange={changeTheDate} type="date" min={minDate} value={newDate}/> :
+                <p className={"reservation-detail"}>Datum: {reservationDetails && reservationDetails.reservationDate}</p>}
+            <p className={"reservation-detail"}>Category: {reservationDetails && reservationDetails.category.name}</p>
+            <p className={"reservation-detail"}>Contact gegevens: </p>
+            <p className={"reservation-detail"}>Handyman: {reservationDetails && reservationDetails.handyman.firstname} - {reservationDetails && reservationDetails.handyman.lastname}</p>
+            <p className={"reservation-detail"}>Email: {reservationDetails && reservationDetails.handyman.email}</p>
+            <p className={"reservation-detail"}>Telefoonnummer: {reservationDetails && reservationDetails.handyman.phonenumber}</p>
 
-            {authState.user.roles.some(role=>role.name === "ROLE_HANDYMAN") && (editMode ? <button onClick={saveTheDate}>Save</button> : <button onClick={changeEditmode}>edit</button>)}
+            {authState.user.roles.some(role=>role.name === "ROLE_HANDYMAN") &&
+            (editMode ?
+                <button className={"reservation-button"} onClick={saveTheDate}>Save</button>
+                :
+                <button className={"reservation-button"} onClick={changeEditmode}>edit</button>)
+            }
 
 
         </article>
