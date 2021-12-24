@@ -1,9 +1,14 @@
-import React, {useContext,useState} from 'react';
-import {  useForm } from "react-hook-form";
-import styles from './SignInForm.module.css';
+import React, {useContext, useState} from 'react';
+import {useForm} from "react-hook-form";
+import './SignInForm.css';
 import axios from "axios";
 import {Link, useHistory} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
+import {Form} from "../Form";
+import {TextInput} from "../TextInput";
+import {SubmitButton} from "../SubmitButton";
+import {SuccessMessage} from "../SuccessMessags";
+import {LoadingMessage} from "../LoadingMessage";
 
 
 export default function SignInForm() { //TODO eerst checken of gebruiker al bestaat
@@ -45,38 +50,25 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
 
     };
 
-
     return(
         <>
-            <form className={styles.signinForm} onSubmit={handleSubmit(onSubmit)} >
-                <label  htmlFor="userName">Username</label>
-                <input  name={"username"} type="text" ref={register({ required: true,minLength:2 })}/>
-                {errors.username && <span>This field is required</span>}
+            <Form className={"form"} onSubmit={(onSubmit)} handleSubmit={handleSubmit}>
+                <TextInput name={"username"} errors={errors} register={register} type={"text"} rules={{ required: true,minLength:2 }}/>
+                <TextInput name={"password"} errors={errors} register={register} type={"password"} rules={{ required: true,minLength:2 }}/>
 
-                <label htmlFor="password">Password</label>
-                <input name={"password"} type="password" ref={register({ required: true,minLength:2 })}/>
-                {errors.password && <span>This field is required</span>}
+                <SubmitButton>Login</SubmitButton>
 
+                {loginSucces === true && <SuccessMessage> Logged in successfully </SuccessMessage> }
+                {loading === true && <LoadingMessage>  Loading</LoadingMessage>}
 
+                <p className={"signup-reminder"}> Don't have an account yet? Please <Link to="/signup">register.</Link> first</p>
 
-                <button type="submit"
+            </Form>
 
-                >
-                    inloggen
-                </button>
-
-                {loginSucces === true && <span> "Logged in succesfully" </span>}
-                {loading === true && <span> "Loading..." </span>}
-
-
-            </form>
-
-            <p> Don't have an account yet? Please <Link to="/signup">register.</Link> first</p>
 
         </>
     );
 
 
 }
-
 

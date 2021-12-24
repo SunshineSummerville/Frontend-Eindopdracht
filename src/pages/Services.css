@@ -1,0 +1,38 @@
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1500px;
+    margin:auto;
+    padding: 10px;
+
+
+}
+
+.handyman-list {
+    max-width: 400px;
+    margin:auto;
+    list-style-type:none ;
+
+}
+
+
+
+.handyman-category {
+    background-color: gold;
+    color:white;
+    max-width: 400px;
+    margin:auto;
+    text-align: center;
+    padding:20px;
+    margin-bottom:10px;
+    margin-top:10px;
+
+}
+
+.handyman-book-menu {
+    position:fixed;
+    bottom: 0;
+    background-color: white;
+    width: 100%;
+}

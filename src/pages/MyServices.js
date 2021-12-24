@@ -2,6 +2,7 @@ import React, {useEffect, useState, useContext} from 'react'
 import axios from "axios";
 import {AuthContext} from "../context/AuthContext";
 import {isHandymanForCategory} from "../utils/logic";
+import {PageTitle} from "../components/PageTitle";
 
 
 export default function MyServices() {
@@ -55,6 +56,8 @@ export default function MyServices() {
 
 
     return (
+        <>
+            <PageTitle title={"my services"}/>
         <form>
             {allCategories.map((category) => {
                 const isHandymanForThisCategory = isHandymanForCategory(category, handymanId)
@@ -71,6 +74,7 @@ export default function MyServices() {
 
 
         </form>
+        </>
 
     );
 

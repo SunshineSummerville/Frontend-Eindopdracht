@@ -1,10 +1,11 @@
 import React from 'react'
 import SignInForm from "../components/SignInForm";
+import {PageTitle} from "../components/PageTitle";
 
 export default function SignIn(){
     return            <section>
-                <h2>SignIn</h2>
-                <SignInForm />
+        <PageTitle title={"sign in"}/>
+        <SignInForm />
             </section>
 
 

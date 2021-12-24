@@ -4,6 +4,7 @@ import axios from "axios";
 import {Link, useHistory,useParams} from "react-router-dom";
 import {AuthContext} from "../context/AuthContext";
 import {formatMinDate} from "../utils/dateFunction";
+import {PageTitle} from "../components/PageTitle";
 
 function readFile(file){
     return new Promise((resolve, reject) => {
@@ -64,6 +65,8 @@ export default function ShoppingCart() {
 
 
     return (
+        <>
+            <PageTitle title={"Book a handyman"}/>
             <form
 
                 onSubmit={handleSubmit(onSubmit)}
@@ -94,6 +97,7 @@ export default function ShoppingCart() {
 
 
             </form>
+            </>
 
 
     );

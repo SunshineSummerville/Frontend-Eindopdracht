@@ -3,6 +3,7 @@ import { useParams} from "react-router-dom";
 import axios from "axios";
 import {AuthContext} from "../context/AuthContext";
 import {formatMinDate} from "../utils/dateFunction";
+import {PageTitle} from "../components/PageTitle";
 
 
 export default function ReservationDetails() {
@@ -64,7 +65,7 @@ export default function ReservationDetails() {
 
     return (
         <article className='reservation details'>
-            <h2>Reservation Details</h2>
+           <PageTitle title={"reservation details"}/>
             {reservationDetails && <img src={reservationDetails.image} alt="Your uploaded file"/>}
             <p>Reserveringsnummer: {reservationDetails && reservationDetails.id}</p>
             {editMode ? <input onChange={changeTheDate} type="date" min={minDate} value={newDate}/> :
