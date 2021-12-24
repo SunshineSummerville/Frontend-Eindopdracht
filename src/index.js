@@ -18,3 +18,8 @@ ReactDOM.render(
 );
 
 
+export {Form} from "./components/Form";
+export {TextInput} from "./components/TextInput";
+export {SubmitButton} from "./components/SubmitButton";
+export {SuccessMessage} from "./components/SuccessMessags";
+export {LoadingMessage} from "./components/LoadingMessage";

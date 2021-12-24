@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react'
 import axios from "axios";
 import CategoryItem from "../components/CategoryItem";
 import HandymanItem from "../components/HandymanItem";
+import "./Services.css";
+import {PageTitle} from "../components/PageTitle";
 
 
 export default function Services(){
@@ -25,23 +27,24 @@ export default function Services(){
 
 
     return (
-        <section className= 'services'>
-            <h2>Services</h2>
-            <ul>
-                {categories.map((category)=> {
-                    return <CategoryItem key={category.id} category={category} setSelectedCategory={setSelectedCategory}/>
+        <section className='services'>
+            <PageTitle title={"services"}/>
+            <ul className={"category-list"}>
+                {categories.map((category) => {
+                    return <CategoryItem key={category.id} category={category}
+                                         setSelectedCategory={setSelectedCategory}/>
 
                 })}
             </ul>
-            <menu>
-                <h2>{selectedCategory.name}</h2>
-                <ul>
-                {selectedCategory.handymen?.map((handyman)=>{
+            {selectedCategory.name && <menu className={"handyman-book-menu"}>
+                <h2 className={"handyman-category"}>{selectedCategory.name}</h2>
+                <ul className={"handyman-list"}>
+                    {selectedCategory.handymen?.map((handyman) => {
 
-                    return <HandymanItem key={handyman.id} handyman={handyman} selectedCategory={selectedCategory}/>
-                })}
+                        return <HandymanItem key={handyman.id} handyman={handyman} selectedCategory={selectedCategory}/>
+                    })}
                 </ul>
-            </menu>
+            </menu>}
         </section>
     );
 

@@ -1,9 +1,10 @@
 import React from 'react'
 import SignUpForm from "../components/SignUpForm";
+import {PageTitle} from "../components/PageTitle";
 
 export default function SignUp(){
     return <section>
-        <h2>SignUp</h2>
+        <PageTitle title={"sign up"}/>
         <SignUpForm />
     </section>;
 

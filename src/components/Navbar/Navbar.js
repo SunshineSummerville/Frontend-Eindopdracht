@@ -21,7 +21,7 @@ function Navbar(props) {
                         <FaIcons.FaBars onClick={showSidebar}/>
                     </Link>
 
-                    {authState.user !== null && <button onClick={logout}> Logout</button>}
+                    {authState.user !== null && <button className={"logout-button"} onClick={logout}> Logout</button>}
                 </menu>
                 <nav className={sidebar ? 'nav-menu space active' : 'nav-menu'}>
                     <ul className='nav-menu-items' onClick={showSidebar}>

@@ -1,0 +1,12 @@
+.user-role{
+    padding: 10px;
+    font-size: 20px;
+    display: flex;
+    width: 350px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.returning{
+    padding: 10px;
+}

@@ -1,0 +1,21 @@
+.history-item{
+    font-size: 20px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    max-width: 600px;
+    padding-left: 10px;
+    margin-left: 20px;
+
+}
+
+
+.see-details-button {
+    background-color: gold;
+    border: none;
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+}

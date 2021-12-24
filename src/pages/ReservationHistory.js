@@ -2,6 +2,8 @@ import React, {useContext, useEffect, useState} from 'react'
 import axios from "axios";
 import {AuthContext} from "../context/AuthContext";
 import ReservationItem from "../components/ReservationItem";
+import {PageTitle} from "../components/PageTitle";
+import "./ReservationHistory.css";
 
 
 export default function ReservationHistory(){
@@ -31,7 +33,7 @@ export default function ReservationHistory(){
 
     return (
         <section className= 'ReservationHistory'>
-            <h2>ReservationHistory</h2>
+            <PageTitle title={"reservation history"}/>
             <ul>
                 {reservations.map((reservation)=>{
                     return <ReservationItem key={reservation.id} reservation={reservation}/>
