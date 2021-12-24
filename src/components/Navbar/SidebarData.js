@@ -49,13 +49,5 @@ export const SidebarData = [
         loggedIn: true
 
     },
-    {
-        title: 'My Services',
-        path: '/myservices',
-        icon: <FaIcons.FaClipboardList />,
-        className: 'nav-text',
-        notLoggedIn: false,
-        loggedIn: true
 
-    },
 ]

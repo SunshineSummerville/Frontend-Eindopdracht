@@ -46,6 +46,15 @@ function Navbar(props) {
 
 
                         })}
+                        {authState.user?.roles?.some(role=>role.name === "ROLE_HANDYMAN") &&
+                        <li  className={"nav-text"}>
+                            <Link to={"/myservices"}>
+                                <FaIcons.FaClipboardList />
+                                <span>My services</span>
+                            </Link>
+                        </li>
+                        }
+
                     </ul>
                 </nav>
             </IconContext.Provider>
