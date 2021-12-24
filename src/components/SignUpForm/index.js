@@ -1,9 +1,13 @@
 import React, {useState} from 'react'
 import {useForm} from "react-hook-form";
-import styles from './SignUpForm.module.css';
 import axios from "axios";
 import {Link, useHistory} from "react-router-dom";
 import {emailPattern} from "../../utils/validation";
+import {Form} from "../Form";
+import {TextInput} from "../TextInput";
+import {SubmitButton} from "../SubmitButton";
+import {SuccessMessage} from "../SuccessMessags";
+import {LoadingMessage} from "../LoadingMessage";
 
 
 export default function SignUpForm(props) {
@@ -52,74 +56,35 @@ export default function SignUpForm(props) {
 
     return (
         <>
-            <form
-                className={styles.signupForm}
-                onSubmit={handleSubmit(onSubmit)}
+            <Form
+                onSubmit={(onSubmit)} handleSubmit={handleSubmit}
             >
+
                 <label htmlFor="user"> User </label>
                 <input type="radio" id="user" name="role" value="user" ref={register}/>
                 <label htmlFor="handyman"> Handyman </label>
                 <input type="radio" id="handyman" name="role" value="handyman" ref={register}/>
 
-                <label
-                    className={styles.title_gebruikersnaam}
-                    htmlFor="userName">Username</label>
-                <input name={"username"}
-                       type="text"
-                       ref={register({required: true, minLength: 2})}/>
-                {errors.username && <span>This field is required</span>}
+                <TextInput name={"username"} errors={errors} register={register} type={"text"} rules={{ required: true,minLength:2 }}/>
+                <TextInput name={"password"} errors={errors} register={register} type={"password"} rules={{ required: true,minLength:6 }}/>
+                <TextInput name={"firstname"} errors={errors} register={register} type={"text"} rules={{ required: true,minLength:2 }}/>
+                <TextInput name={"lastname"} errors={errors} register={register} type={"text"} rules={{ required: true,minLength:2 }}/>
+                <TextInput name={"email"} errors={errors} register={register} type={"text"} rules={{ required: true,minLength:2, pattern: emailPattern }}/>
+                <TextInput name={"phonenumber"} errors={errors} register={register} type={"text"} rules={{ required: true, minLength: 3, maxLength:10 }}/>
+                <TextInput name={"street"} errors={errors} register={register} type={"text"} rules={{ required: true, minLength: 2}}/>
+                <TextInput name={"housenumber"} errors={errors} register={register} type={"text"} rules={{ required: true, minLength: 1}}/>
+                <TextInput name={"postalcode"} errors={errors} register={register} type={"text"} rules={{ required: true, minLength: 4}}/>
+                <TextInput name={"provincie"} errors={errors} register={register} type={"text"} rules={{ required: false, minLength: 4}}/>
 
-                <label
-                    htmlFor="password">Password</label>
-                <input name={"password"}
-                       type="password"
-                       ref={register({required: true, minLength: 6})}/>
-                {errors.password &&
-                <span>This field is required</span>}
+                <SubmitButton>Sign up</SubmitButton>
 
-                <label htmlFor="firstName">Firstname</label>
-                <input name={"firstname"} type="text" ref={register({required: true, minLength: 2})}/>
-                {errors.firstname && <span>This field is required</span>}
+                {registerSucces === true &&  <SuccessMessage> Registered successfully </SuccessMessage>}
+                {loading === true && <LoadingMessage>  Loading</LoadingMessage>}
 
-                <label htmlFor="lastName">Lastname</label>
-                <input name={"lastname"} type="text" ref={register({required: true, minLength: 2})}/>
-                {errors.lastname && <span>This field is required</span>}
+                <p> Returning visitor? please sign in <Link to="/signin">here.</Link></p>
 
-                <label htmlFor="email">Email</label>
-                <input name={"email"} type="text"
-                       ref={register({required: true, minLength: 2, pattern: emailPattern})}/>
-                {errors.email && <span>This field is required</span>}
+            </Form>
 
-                <label htmlFor="phoneNumber">Phonenumber</label>
-                <input name={"phonenumber"} type="text" ref={register({required: true, minLength: 3, maxLength:10})}/>
-                {errors.phonenumber && <span>Size must be between 3 and 10 && This field is required</span>}
-
-                <label htmlFor="street">Street</label>
-                <input name={"street"} type="text" ref={register({required: true, minLength: 2})}/>
-                {errors.street && <span>This field is required</span>}
-
-                <label htmlFor="houseNumber">Housenumber</label>
-                <input name={"housenumber"} type="text" ref={register({required: true, minLength: 1})}/>
-                {errors.housenumber && <span>This field is required</span>}
-
-                <label htmlFor="postalCode">Postalcode</label>
-                <input name={"postalcode"} type="text" ref={register({required: true, minLength: 4})}/>
-                {errors.postalcode && <span>Postalcode should be 4 numbers and 2 letters. & pls without space inbetween</span>}
-
-                <label htmlFor="provincie">Provincie</label>
-                <input name={"provincie"} type="text" ref={register({required: false, minLength: 4})}/>
-
-
-                <input type="submit"
-
-                />
-                {registerSucces === true && <span> "Registered succesfully" </span>}
-                {loading === true && <span> "Loading..." </span>}
-
-
-            </form>
-
-            <p> Returning visitor? please sign in <Link to="/signin">here.</Link></p>
         </>
     );
 
