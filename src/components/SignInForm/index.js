@@ -11,7 +11,7 @@ import {SuccessMessage} from "../SuccessMessags";
 import {LoadingMessage} from "../LoadingMessage";
 
 
-export default function SignInForm() { //TODO eerst checken of gebruiker al bestaat
+export default function SignInForm() { 
     const {login} = useContext (AuthContext);
     const { register, handleSubmit, errors } = useForm();
     const [loginSucces, setLoginSucces] = useState (false);
