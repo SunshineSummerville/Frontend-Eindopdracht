@@ -43,7 +43,6 @@ export default function SignInForm() { //TODO eerst checken of gebruiker al best
 
 
         } catch (e) {
-            // console.error(e); @TODO Moet er nog iets met de error gebeuren?
 
         }
         setLoading(false);
