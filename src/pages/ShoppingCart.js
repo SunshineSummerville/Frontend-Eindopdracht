@@ -6,7 +6,6 @@ import {AuthContext} from "../context/AuthContext";
 import {formatMinDate} from "../utils/dateFunction";
 import {PageTitle} from "../components/PageTitle";
 import {Form} from "../components/Form";
-import "./ShoppingCart.css";
 import {SubmitButton} from "../components/SubmitButton";
 import {SuccessMessage} from "../components/SuccessMessags";
 
