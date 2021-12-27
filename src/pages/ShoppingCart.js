@@ -99,7 +99,7 @@ export default function ShoppingCart() {
                 {authState.user === null ?
                     <p className={"signup-reminder"}> Please sign in <Link to="/signin">here.</Link> or <Link to="/signup"> create an account </Link> </p>
                     :
-                    <SubmitButton>Sign up</SubmitButton>
+                    <SubmitButton>Submit Reservation</SubmitButton>
                 }
 
 
